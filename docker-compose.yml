@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # Servicio de Base de Datos
+  db:
+    image: mysql:8.0
+    container_name: seguridad-web-mysql
+    restart: always
+    environment:
+      # Credenciales de administrador (Root)
+      MYSQL_ROOT_PASSWORD: Root123!
+      
+      # Nombre de la Base de Datos (si lo cambias, debe coincidir con el schema.sql)
+      MYSQL_DATABASE: seguridad_web
+      
+      # Usuario secundario si no quieres usar root en la app
+      MYSQL_USER: user_app
+      MYSQL_PASSWORD: user_pass
+      
+    ports:
+      # Use el 3307 en la PC para evitar conflictos si ya tienes MySQL instalado
+      - "3307:3306"
+      
+    volumes:
+      # Esto carga el archivo schema.sql automáticamente al iniciar
+      - ./schema.sql:/docker-entrypoint-initdb.d/init.sql
+      
+      # Esto guarda los datos aunque apagues la PC
+      - mysql_data:/var/lib/mysql
+
+# Definición del volumen de datos
+volumes:
+  mysql_data:
