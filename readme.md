@@ -55,14 +55,28 @@ Este proyecto está contenerizado para un despliegue inmediato.
     ```
 3.  Configurar variables de entorno:
     * Renombrar el archivo `.env.example` a `.env`.
-4.  Iniciar la base de datos (Docker):
+4.  Configurar el docker-compose.yml:
+    Dentro de este archivo veras las variable de entorno del contenedor,con el que se creara el contenedor
+
+     environment:
+      # Credenciales de administrador (Root)
+      MYSQL_ROOT_PASSWORD: Root123!
+      
+      # Nombre de la Base de Datos (si lo cambias, debe coincidir con el schema.sql)
+      MYSQL_DATABASE: seguridad_web
+      
+      # Usuario secundario si no quieres usar root en la app
+      MYSQL_USER: user_app
+      MYSQL_PASSWORD: user_pass
+      
+6.  Iniciar la base de datos (Docker):
     ```bash
     docker-compose up -d
     ```
-5.  Correr el servidor:
+7.  Correr el servidor:
     ```bash
     npm start
     ```
 
 ---
-**Autor:** Andrés Rodríguez Morales
+**Autores:** Andrés Rodríguez Morales y Andres Guzman Cadena
