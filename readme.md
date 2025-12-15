@@ -65,4 +65,4 @@ Este proyecto está contenerizado para un despliegue inmediato.
     ```
 
 ---
-**Autor:** Andrés Rodríguez Morales
+**Autores:** Andrés Rodríguez Morales y Andres Guzman Cadena
